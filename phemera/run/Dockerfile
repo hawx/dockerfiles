@@ -1,8 +1,6 @@
-FROM       busybox
+FROM       scratch
 MAINTAINER Joshua Hawxwell <m@hawx.me>
 
-ADD        assets /assets
-ADD        views /views
 ADD        settings.toml /settings.toml
 ADD        phemera /phemera
 

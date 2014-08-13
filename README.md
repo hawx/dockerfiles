@@ -29,11 +29,11 @@ $ docker run -d -p 80:80 -p 443:443 -v /etc/nginx:/etc/nginx \
 
 ## phemera
 
-Make sure `phemera/settings.toml` exists with your settings, then
+Make sure `phemera/run/settings.toml` exists with your settings, then
 
 ``` bash
 $ docker build -t $USER/phemera-builder phemera/build
-$ docker run --rm -v $(pwd)/phemera/run:/out $USER/phemera-builder
+$ docker run --rm -v $(pwd)/phemera/run:/target $USER/phemera-builder
 $ docker build -t $USER/phemera phemera/run
 $ docker run -v /data --name phemera-data busybox
 $ docker run -d -p 8080:80 --volumes-from phemera-data -v /etc/ssl/certs:/etc/ssl/certs $USER/phemera
