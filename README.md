@@ -38,3 +38,19 @@ $ docker build -t $USER/phemera phemera/run
 $ docker run -v /data --name phemera-data busybox
 $ docker run -d -p 8080:80 --volumes-from phemera-data -v /etc/ssl/certs:/etc/ssl/certs $USER/phemera
 ```
+
+## ggg
+
+Make sure `ggg/run/settings.toml` exists with your settings, then
+
+``` bash
+$ docker build -t $USER/ggg-builder ggg/build
+$ docker run --rm -v $(pwd)/ggg/run:/target $USER/ggg-builder
+$ docker build -t $USER/ggg ggg/run
+$ docker run -v /data --name ggg-data busybox
+$ docker run -d -p 8080:80 --volumes-from ggg-data -v /opt/git:/opt/git -v /etc/ssl/certs:/etc/ssl/certs $USER/ggg
+```
+
+Since we are mounting `/opt/git` from the local filesystem the git repos are
+accessible to the outside world. For now this also means private repos are only
+private because they are not listed, not because they can't be accessed.
