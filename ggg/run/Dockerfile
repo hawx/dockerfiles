@@ -1,4 +1,4 @@
-FROM       scratch
+FROM       radial/busyboxplus:git
 MAINTAINER Joshua Hawxwell <m@hawx.me>
 
 ADD        settings.toml /settings.toml
