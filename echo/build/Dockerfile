@@ -10,5 +10,5 @@ RUN        mkdir /go
 ENV        GOPATH /go
 
 RUN        CGO_ENABLED=0 /usr/local/go/bin/go get -a -ldflags '-s' github.com/hawx/echo
-VOLUME     /out
-CMD        cp $GOPATH/bin/echo /out
+VOLUME     /target
+CMD        cp $GOPATH/bin/echo /target
